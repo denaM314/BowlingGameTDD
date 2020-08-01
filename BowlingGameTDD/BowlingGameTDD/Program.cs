@@ -1,12 +1,11 @@
 ﻿using System;
 
-namespace RomanNumerals
+namespace BowlingGame
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hecvxcvllo World!");
         }
     }
 }
