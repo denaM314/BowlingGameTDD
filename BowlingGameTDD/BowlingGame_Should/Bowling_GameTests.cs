@@ -20,18 +20,23 @@ namespace BowlingGame_Should
         }
 
         [Test]
-        public void One_roll_increases_roll_by_number_of_fallen_pins()
-        {
-            game.Roll(7);
-            Assert.AreEqual(game.Score(), 7);
-        }
-
-        [Test]
         public void Score_tracks_multiple_non_spare_rolls()
         {
             game.Roll(5);
             game.Roll(4);
             Assert.AreEqual(game.Score(), 9);
+        }
+
+        [Test]
+        public void Score_increases_for_spare_by_10_plus_next_throw()
+        {
+            game.Roll(3);
+            game.Roll(2);
+            game.Roll(6);
+            game.Roll(4);
+            game.Roll(5);
+            game.Roll(1);
+            Assert.AreEqual(game.Score(), 26);
         }
     }
 }
