@@ -25,5 +25,13 @@ namespace BowlingGame_Should
             game.Roll(7);
             Assert.AreEqual(game.Score(), 7);
         }
+
+        [Test]
+        public void Score_tracks_multiple_non_spare_rolls()
+        {
+            game.Roll(5);
+            game.Roll(4);
+            Assert.AreEqual(game.Score(), 9);
+        }
     }
 }
