@@ -18,5 +18,12 @@ namespace BowlingGame_Should
             game.Roll(0);
             Assert.AreEqual(game.Score(), 0);
         }
+
+        [Test]
+        public void One_roll_increases_roll_by_number_of_fallen_pins()
+        {
+            game.Roll(7);
+            Assert.AreEqual(game.Score(), 7);
+        }
     }
 }
