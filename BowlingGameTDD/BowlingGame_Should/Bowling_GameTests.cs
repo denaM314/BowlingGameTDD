@@ -36,7 +36,7 @@ namespace BowlingGame_Should
             game.Roll(4);
             game.Roll(5);
             game.Roll(1);
-            Assert.AreEqual(game.Score(), 26);
+            Assert.AreEqual(26, game.Score());
         }
     }
 }

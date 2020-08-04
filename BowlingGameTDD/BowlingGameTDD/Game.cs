@@ -1,10 +1,11 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BowlingGame
 {
     public class Game
     {
-        private int _gameScore;
+        private int _gameScore = 0;
         private int _frameScore = 0;
         private int _throwCount = 0;
 
@@ -12,13 +13,13 @@ namespace BowlingGame
         {
             _throwCount++;
 
-            if (Strike())
+            if (_frameScore == 10)
             {
                 _frameScore = 0;
-                _gameScore += pins;         
+                _gameScore += pins;
             }
-           
-            _frameScore += pins;           
+
+            _frameScore += pins;
 
             if (_throwCount == 2)
             {
@@ -30,11 +31,6 @@ namespace BowlingGame
                     _frameScore = 0;
                 }
             }
-        }
-
-        private bool Strike()
-        {
-            return _throwCount == 1 && _frameScore == 10;
         }
 
         public int Score()
