@@ -4,37 +4,42 @@ namespace BowlingGame
 {
     public class Game
     {
-        private int score;
-        private int knockedOverPins = 0;
-        private int throwCount = 0;
+        private int _gameScore;
+        private int _frameScore = 0;
+        private int _throwCount = 0;
 
         public void Roll(int pins)
         {
-            throwCount++;
+            _throwCount++;
 
-            if (knockedOverPins == 10)
+            if (Strike())
             {
-                knockedOverPins = 0;
-                score += pins;         
+                _frameScore = 0;
+                _gameScore += pins;         
             }
            
-            knockedOverPins += pins;           
+            _frameScore += pins;           
 
-            if (throwCount == 2)
+            if (_throwCount == 2)
             {
-                score += knockedOverPins;
-                throwCount = 0;
+                _gameScore += _frameScore;
+                _throwCount = 0;
 
-                if (knockedOverPins < 10)
+                if (_frameScore < 10)
                 {
-                    knockedOverPins = 0;
+                    _frameScore = 0;
                 }
             }
         }
 
+        private bool Strike()
+        {
+            return _throwCount == 1 && _frameScore == 10;
+        }
+
         public int Score()
         {
-            return score;
+            return _gameScore;
         }
     }
 }
